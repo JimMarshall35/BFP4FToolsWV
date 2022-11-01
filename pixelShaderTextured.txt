@@ -1,0 +1,12 @@
+SamplerState Sampler : register(s0);
+Texture2D ShaderTexture : register(t0);
+struct VertexShaderOutput
+{
+    float4 Position : SV_Position;
+    float4 Color : COLOR;
+    float2 TextureUV : TEXCOORD0;
+};
+float4 main(VertexShaderOutput input) : SV_Target
+{
+    return ShaderTexture.Sample(Sampler, input.TextureUV);
+}

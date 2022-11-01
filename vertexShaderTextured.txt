@@ -1,0 +1,26 @@
+cbuffer PerObject: register(b0)
+{
+    float4x4 WorldViewProj;
+};
+
+struct VertexShaderInput
+{
+    float4 Position : SV_Position;
+    float4 Color : COLOR;
+    float2 TextureUV : TEXCOORD0;
+};
+
+struct VertexShaderOutput
+{
+    float4 Position : SV_Position;
+    float4 Color : COLOR;
+    float2 TextureUV : TEXCOORD0;
+};
+
+VertexShaderOutput main(VertexShaderInput input)
+{
+    VertexShaderOutput output = (VertexShaderOutput)0;
+    output.Position = mul(input.Position, WorldViewProj);
+    output.TextureUV = input.TextureUV;
+    return output;
+}
