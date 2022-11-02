@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,27 +15,48 @@ namespace Minimal_asset_viewer
 {
     public partial class Form1 : Form
     {
+        private readonly Engine3D _engine;
+
+        private bool _meshMouseUp = false;
+        private Point _meshLastMousePos = new Point(0, 0);
+        private readonly string _meshesFolderPath;
+        private readonly string[] _meshFiles;
+        private int _selectedFileIndex = 0;
+
+        private string FullPath => Path.Combine(_meshesFolderPath, _meshFiles[_selectedFileIndex]);
 
         public Form1(string[] args)
         {
             InitializeComponent();
             _engine = new Engine3D(pictureBox1);
-            LoadMeshAtPath(args[0]);
+            var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
+            _meshesFolderPath = new Uri(Path.Combine(path, "meshes")).LocalPath;
+            _meshFiles = Directory.GetFiles(_meshesFolderPath)
+                .Select(s => Path.GetFileName(s))
+                .ToArray();
+            MeshFilesCombo.DataSource = _meshFiles;
+            MeshFilesCombo.SelectedIndex = 0;
+
+            LoadMeshAtPath(FullPath);
             rendererTimer.Enabled = true;
         }
 
         private bool LoadMeshAtPath(string path)
         {
+            _engine.objects.Clear();
             string ending = Path.GetExtension(path).ToLower();
             var data = File.ReadAllBytes(path);
+            DescriptionLabel.Text = "";
             switch (ending)
             {
                 case ".staticmesh":
                     BF2StaticMesh stm = new BF2StaticMesh(data);
+                    DescriptionLabel.Text = stm.GetDescription();
                     _engine.objects.AddRange(stm.ConvertForEngine(_engine, true, 1));
                     break;
                 case ".bundledmesh":
                     BF2BundledMesh bm = new BF2BundledMesh(data);
+                    DescriptionLabel.Text = bm.GetDescription();
                     _engine.objects.AddRange(bm.ConvertForEngine(_engine, true, 1));
                     break;
                 case ".skinnedmesh":
@@ -92,11 +114,23 @@ namespace Minimal_asset_viewer
             }
         }
 
-        private readonly Engine3D _engine;
-
-        private bool _meshMouseUp = false;
-        private Point _meshLastMousePos = new Point(0, 0);
-
         
+
+        private void DescriptionLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MeshFilesCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _selectedFileIndex = ((ComboBox)sender).SelectedIndex;
+
+            LoadMeshAtPath(FullPath);
+        }
+
+        private void DescriptionLabel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
