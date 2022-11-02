@@ -35,8 +35,10 @@ namespace Minimal_asset_viewer
             this.DescriptionLabel = new System.Windows.Forms.Label();
             this.MeshFilesCombo = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.geomatIdxPicker = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.geomatIdxPicker)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -86,11 +88,20 @@ namespace Minimal_asset_viewer
             this.panel1.Size = new System.Drawing.Size(200, 399);
             this.panel1.TabIndex = 3;
             // 
+            // geomatIdxPicker
+            // 
+            this.geomatIdxPicker.Location = new System.Drawing.Point(140, 13);
+            this.geomatIdxPicker.Name = "geomatIdxPicker";
+            this.geomatIdxPicker.Size = new System.Drawing.Size(120, 20);
+            this.geomatIdxPicker.TabIndex = 4;
+            this.geomatIdxPicker.ValueChanged += new System.EventHandler(this.geomatIdxPicker_ValueChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.geomatIdxPicker);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.MeshFilesCombo);
             this.Controls.Add(this.pictureBox1);
@@ -99,6 +110,7 @@ namespace Minimal_asset_viewer
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.geomatIdxPicker)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -110,6 +122,7 @@ namespace Minimal_asset_viewer
         private System.Windows.Forms.Label DescriptionLabel;
         private System.Windows.Forms.ComboBox MeshFilesCombo;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.NumericUpDown geomatIdxPicker;
     }
 }
 

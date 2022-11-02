@@ -41,7 +41,7 @@ namespace Minimal_asset_viewer
             rendererTimer.Enabled = true;
         }
 
-        private bool LoadMeshAtPath(string path)
+        private bool LoadMeshAtPath(string path, bool resetCamera = true)
         {
             _engine.objects.Clear();
             string ending = Path.GetExtension(path).ToLower();
@@ -52,16 +52,19 @@ namespace Minimal_asset_viewer
                 case ".staticmesh":
                     BF2StaticMesh stm = new BF2StaticMesh(data);
                     DescriptionLabel.Text = stm.GetDescription();
-                    _engine.objects.AddRange(stm.ConvertForEngine(_engine, true, 1));
+                    geomatIdxPicker.Maximum = stm.geomat.Count();
+                    _engine.objects.AddRange(stm.ConvertForEngine(_engine, true, (int)geomatIdxPicker.Value));
                     break;
                 case ".bundledmesh":
                     BF2BundledMesh bm = new BF2BundledMesh(data);
                     DescriptionLabel.Text = bm.GetDescription();
-                    _engine.objects.AddRange(bm.ConvertForEngine(_engine, true, 1));
+                    geomatIdxPicker.Maximum = bm.geomat.Count();
+                    _engine.objects.AddRange(bm.ConvertForEngine(_engine, true, (int)geomatIdxPicker.Value));
                     break;
                 case ".skinnedmesh":
                     BF2SkinnedMesh skm = new BF2SkinnedMesh(data);
-                    _engine.objects.AddRange(skm.ConvertForEngine(_engine, true, 1));
+                    geomatIdxPicker.Maximum = skm.geomat.Count();
+                    _engine.objects.AddRange(skm.ConvertForEngine(_engine, true, (int)geomatIdxPicker.Value));
                     break;
                 case ".collisionmesh":
                     BF2CollisionMesh cm = new BF2CollisionMesh(data);
@@ -73,7 +76,11 @@ namespace Minimal_asset_viewer
                     _engine.objects.Add(o);
                     break;
             }
-            _engine.ResetCameraDistance();
+            if (resetCamera)
+            {
+                _engine.ResetCameraDistance();
+            }
+            
             return true;
         }
 
@@ -131,6 +138,11 @@ namespace Minimal_asset_viewer
         private void DescriptionLabel_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void geomatIdxPicker_ValueChanged(object sender, EventArgs e)
+        {
+            LoadMeshAtPath(FullPath, false);
         }
     }
 }
