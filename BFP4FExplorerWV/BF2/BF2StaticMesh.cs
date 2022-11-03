@@ -11,13 +11,18 @@ using SharpDX.Mathematics.Interop;
 
 namespace BFP4FExplorerWV
 {
+
     public class BF2StaticMesh
     {
+        const int COMPACTED_VERT_SIZE_IN_FLOATS = 5;
+
         public Helper.BF2MeshHeader header;
         public Helper.BF2MeshGeometry geometry;
         public uint u1;
         public List<Helper.BF2MeshSTMLod> lods;
         public List<Helper.BF2MeshSTMGeometryMaterial> geomat;
+
+        private float[] _compactedVertices;
 
         public BF2StaticMesh(byte[] data)
         {
@@ -32,6 +37,34 @@ namespace BFP4FExplorerWV
                 lods.Add(new Helper.BF2MeshSTMLod(m, header));
             for (int i = 0; i < count; i++)
                 geomat.Add(new Helper.BF2MeshSTMGeometryMaterial(m, header));
+
+            SetCompactedVertices();
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void SetCompactedVertices()
+        {
+            // (number of raw floats / number of complete vertices) gives number of floats per vertex in loaded file
+            int fileVertexSize = geometry.vertices.Count / (int)geometry.numVertices;
+            _compactedVertices = new float[geometry.numVertices * COMPACTED_VERT_SIZE_IN_FLOATS];
+
+            int writePtr = 0;
+            for(int i = 0; i < geometry.numVertices; i++)
+            {
+                int pos = i * fileVertexSize;
+                // position
+                _compactedVertices[writePtr++] = geometry.vertices[pos];
+                _compactedVertices[writePtr++] = geometry.vertices[pos + 1];
+                _compactedVertices[writePtr++] = geometry.vertices[pos + 2];
+
+                // uv
+                _compactedVertices[writePtr++] = geometry.vertices[pos + 7];
+                _compactedVertices[writePtr++] = geometry.vertices[pos + 8];
+
+            }
         }
 
         public List<RenderObject> ConvertForEngine(Engine3D engine, bool loadTextures, int geoMatIdx)
@@ -55,7 +88,7 @@ namespace BFP4FExplorerWV
                     }
                 if(texture == null)
                     texture = engine.defaultTexture;
-                int m = geometry.vertices.Count / (int)geometry.numVertices;
+                int m = COMPACTED_VERT_SIZE_IN_FLOATS;
                 for (int j = 0; j < mat.numIndicies; j++)
                 {
                     int pos = (geometry.indices[(int)mat.indiciesStartIndex + j] + (int)mat.vertexStartIndex) * m;
@@ -79,12 +112,16 @@ namespace BFP4FExplorerWV
         
         public RenderObject.VertexWired GetVector(int pos)
         {
-            return new RenderObject.VertexWired(new Vector4(geometry.vertices[pos], geometry.vertices[pos + 1], geometry.vertices[pos + 2], 1f), Color4.Black);
+            return new RenderObject.VertexWired(new Vector4(_compactedVertices[pos], _compactedVertices[pos + 1], _compactedVertices[pos + 2], 1f), Color4.Black);
         }
 
         public RenderObject.VertexTextured GetVertex(int pos)
         {
-            return new RenderObject.VertexTextured(new Vector4(geometry.vertices[pos], geometry.vertices[pos + 1], geometry.vertices[pos + 2], 1), Color.White, new Vector2(geometry.vertices[pos + 7], geometry.vertices[pos + 8]));
+            return new RenderObject.VertexTextured(
+                new Vector4(_compactedVertices[pos], _compactedVertices[pos + 1], _compactedVertices[pos + 2], 1f),
+                Color.White,
+                new Vector2(_compactedVertices[pos + 3],
+                _compactedVertices[pos + 4]));
         }
     }
 }
