@@ -43,6 +43,7 @@ namespace Minimal_asset_viewer
 
         private bool LoadMeshAtPath(string path, bool resetCamera = true)
         {
+
             _engine.objects.Clear();
             string ending = Path.GetExtension(path).ToLower();
             var data = File.ReadAllBytes(path);
@@ -50,26 +51,42 @@ namespace Minimal_asset_viewer
             switch (ending)
             {
                 case ".staticmesh":
-                    BF2StaticMesh stm = new BF2StaticMesh(data);
-                    DescriptionLabel.Text = stm.GetDescription();
-                    geomatIdxPicker.Maximum = stm.geomat.Count();
-                    _engine.objects.AddRange(stm.ConvertForEngine(_engine, true, (int)geomatIdxPicker.Value));
-                    break;
+                    {
+                        var newMesh = new_importer.Bf2Loader.LoadBf2File(path, error => Console.WriteLine(error));
+                        BF2StaticMesh stm = new BF2StaticMesh(data);
+                        DescriptionLabel.Text = stm.GetDescription();
+                        geomatIdxPicker.Maximum = stm.geomat.Count();
+                        _engine.objects.AddRange(newMesh.ConvertForEngine(_engine, true, (int)geomatIdxPicker.Value));
+                        break;
+                    }
+                    
                 case ".bundledmesh":
-                    BF2BundledMesh bm = new BF2BundledMesh(data);
-                    DescriptionLabel.Text = bm.GetDescription();
-                    geomatIdxPicker.Maximum = bm.geomat.Count();
-                    _engine.objects.AddRange(bm.ConvertForEngine(_engine, true, (int)geomatIdxPicker.Value));
-                    break;
+                    {
+                        var newMesh = new_importer.Bf2Loader.LoadBf2File(path, error => Console.WriteLine(error));
+                        BF2BundledMesh bm = new BF2BundledMesh(data);
+                        DescriptionLabel.Text = bm.GetDescription();
+                        geomatIdxPicker.Maximum = bm.geomat.Count();
+                        _engine.objects.AddRange(newMesh.ConvertForEngine(_engine, true, (int)geomatIdxPicker.Value));
+                        break;
+                    }
+                    
                 case ".skinnedmesh":
-                    BF2SkinnedMesh skm = new BF2SkinnedMesh(data);
-                    geomatIdxPicker.Maximum = skm.geomat.Count();
-                    _engine.objects.AddRange(skm.ConvertForEngine(_engine, true, (int)geomatIdxPicker.Value));
-                    break;
+                    {
+                        var newMesh = new_importer.Bf2Loader.LoadBf2File(path, error => Console.WriteLine(error));
+                        BF2SkinnedMesh skm = new BF2SkinnedMesh(data);
+                        geomatIdxPicker.Maximum = skm.geomat.Count();
+                        _engine.objects.AddRange(newMesh.ConvertForEngine(_engine, true, (int)geomatIdxPicker.Value));
+                        break;
+                    }
+                    
                 case ".collisionmesh":
-                    BF2CollisionMesh cm = new BF2CollisionMesh(data);
-                    _engine.objects.AddRange(cm.ConvertForEngine(_engine));
-                    break;
+                    {
+                        var newMesh = new_importer.Bf2Loader.LoadBf2File(path, error => Console.WriteLine(error));
+                        BF2CollisionMesh cm = new BF2CollisionMesh(data);
+                        _engine.objects.AddRange(newMesh.ConvertForEngine(_engine, true, (int)geomatIdxPicker.Value));
+                        break;
+                    }
+                    
                 default:
                     RenderObject o = new RenderObject(_engine.device, RenderObject.RenderType.TriListWired, _engine.defaultTexture, _engine);
                     o.InitGeometry();

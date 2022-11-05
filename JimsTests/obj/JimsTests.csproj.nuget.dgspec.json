@@ -1,0 +1,121 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\james.marshall\\OneDrive - Malvern Panalytical\\Documents\\bf2\\BFP4FToolsWV\\JimsTests\\JimsTests.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\james.marshall\\OneDrive - Malvern Panalytical\\Documents\\bf2\\BFP4FToolsWV\\Be.Windows.Forms.HexBox\\Be.Windows.Forms.HexBox.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\james.marshall\\OneDrive - Malvern Panalytical\\Documents\\bf2\\BFP4FToolsWV\\Be.Windows.Forms.HexBox\\Be.Windows.Forms.HexBox.csproj",
+        "projectName": "Be.Windows.Forms.HexBox",
+        "projectPath": "C:\\Users\\james.marshall\\OneDrive - Malvern Panalytical\\Documents\\bf2\\BFP4FToolsWV\\Be.Windows.Forms.HexBox\\Be.Windows.Forms.HexBox.csproj",
+        "frameworks": {
+          "net40": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net40": {}
+      }
+    },
+    "C:\\Users\\james.marshall\\OneDrive - Malvern Panalytical\\Documents\\bf2\\BFP4FToolsWV\\BFP4FExplorerWV\\BFP4FExplorerWV.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\james.marshall\\OneDrive - Malvern Panalytical\\Documents\\bf2\\BFP4FToolsWV\\BFP4FExplorerWV\\BFP4FExplorerWV.csproj",
+        "projectName": "BFP4FExplorerWV",
+        "projectPath": "C:\\Users\\james.marshall\\OneDrive - Malvern Panalytical\\Documents\\bf2\\BFP4FToolsWV\\BFP4FExplorerWV\\BFP4FExplorerWV.csproj",
+        "frameworks": {
+          "net45": {
+            "projectReferences": {
+              "C:\\Users\\james.marshall\\OneDrive - Malvern Panalytical\\Documents\\bf2\\BFP4FToolsWV\\Be.Windows.Forms.HexBox\\Be.Windows.Forms.HexBox.csproj": {
+                "projectPath": "C:\\Users\\james.marshall\\OneDrive - Malvern Panalytical\\Documents\\bf2\\BFP4FToolsWV\\Be.Windows.Forms.HexBox\\Be.Windows.Forms.HexBox.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net45": {}
+      }
+    },
+    "C:\\Users\\james.marshall\\OneDrive - Malvern Panalytical\\Documents\\bf2\\BFP4FToolsWV\\JimsTests\\JimsTests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\james.marshall\\OneDrive - Malvern Panalytical\\Documents\\bf2\\BFP4FToolsWV\\JimsTests\\JimsTests.csproj",
+        "projectName": "JimsTests",
+        "projectPath": "C:\\Users\\james.marshall\\OneDrive - Malvern Panalytical\\Documents\\bf2\\BFP4FToolsWV\\JimsTests\\JimsTests.csproj",
+        "packagesPath": "C:\\Users\\james.marshall\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\james.marshall\\OneDrive - Malvern Panalytical\\Documents\\bf2\\BFP4FToolsWV\\JimsTests\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\james.marshall\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net45"
+        ],
+        "sources": {
+          "C:\\Users\\james.marshall\\AppData\\Local\\Stride\\NugetDev": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net45": {
+            "targetAlias": "net45",
+            "projectReferences": {
+              "C:\\Users\\james.marshall\\OneDrive - Malvern Panalytical\\Documents\\bf2\\BFP4FToolsWV\\BFP4FExplorerWV\\BFP4FExplorerWV.csproj": {
+                "projectPath": "C:\\Users\\james.marshall\\OneDrive - Malvern Panalytical\\Documents\\bf2\\BFP4FToolsWV\\BFP4FExplorerWV\\BFP4FExplorerWV.csproj"
+              },
+              "C:\\Users\\james.marshall\\OneDrive - Malvern Panalytical\\Documents\\bf2\\BFP4FToolsWV\\Minimal asset viewer\\Minimal asset viewer.csproj": {
+                "projectPath": "C:\\Users\\james.marshall\\OneDrive - Malvern Panalytical\\Documents\\bf2\\BFP4FToolsWV\\Minimal asset viewer\\Minimal asset viewer.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net45": {
+          "targetAlias": "net45",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.5.0, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.12.0, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[3.16.1, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\james.marshall\\OneDrive - Malvern Panalytical\\Documents\\bf2\\BFP4FToolsWV\\Minimal asset viewer\\Minimal asset viewer.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\james.marshall\\OneDrive - Malvern Panalytical\\Documents\\bf2\\BFP4FToolsWV\\Minimal asset viewer\\Minimal asset viewer.csproj",
+        "projectName": "Minimal asset viewer",
+        "projectPath": "C:\\Users\\james.marshall\\OneDrive - Malvern Panalytical\\Documents\\bf2\\BFP4FToolsWV\\Minimal asset viewer\\Minimal asset viewer.csproj",
+        "frameworks": {
+          "net45": {
+            "projectReferences": {
+              "C:\\Users\\james.marshall\\OneDrive - Malvern Panalytical\\Documents\\bf2\\BFP4FToolsWV\\BFP4FExplorerWV\\BFP4FExplorerWV.csproj": {
+                "projectPath": "C:\\Users\\james.marshall\\OneDrive - Malvern Panalytical\\Documents\\bf2\\BFP4FToolsWV\\BFP4FExplorerWV\\BFP4FExplorerWV.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net45": {}
+      }
+    }
+  }
+}

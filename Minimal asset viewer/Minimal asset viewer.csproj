@@ -32,7 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SharpDX, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1" />
     <Reference Include="SharpDX.Direct3D11, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1" />
+    <Reference Include="SharpDX.Mathematics, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\BFP4FExplorerWV\dll\SharpDX.Mathematics.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,12 +52,38 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bf2Helpers.cs" />
+    <Compile Include="Bf2ToEngineHelper.cs" />
+    <Compile Include="new importer\bf2Vec2.cs" />
+    <Compile Include="new importer\fh2edge.cs" />
+    <Compile Include="new importer\fh2elem.cs" />
+    <Compile Include="new importer\fh2face.cs" />
+    <Compile Include="new importer\fh2poly.cs" />
+    <Compile Include="new importer\fh2vert.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="new importer\bf2bone.cs" />
+    <Compile Include="new importer\bf2geom.cs" />
+    <Compile Include="new importer\Bf2ImportException.cs" />
+    <Compile Include="new importer\Bf2Loader.cs" />
+    <Compile Include="new importer\bf2lod.cs" />
+    <Compile Include="new importer\bf2mat.cs" />
+    <Compile Include="new importer\bf2Mat4x4.cs" />
+    <Compile Include="new importer\bf2mesh.cs" />
+    <Compile Include="new importer\bf2rig.cs" />
+    <Compile Include="new importer\bf2skinweight.cs" />
+    <Compile Include="new importer\bf2Vec3.cs" />
+    <Compile Include="new importer\bf2Vec4.cs" />
+    <Compile Include="new importer\bf2vertattrib.cs" />
+    <Compile Include="new importer\bf2vw.cs" />
+    <Compile Include="new importer\DepthFunc.cs" />
+    <Compile Include="new importer\mat_layer.cs" />
+    <Compile Include="new importer\bf2head.cs" />
+    <Compile Include="new importer\StreamHelpers.cs" />
+    <Compile Include="new importer\VertexUsage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -86,5 +117,6 @@
       <Name>BFP4FExplorerWV</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

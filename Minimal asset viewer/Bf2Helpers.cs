@@ -68,8 +68,8 @@ namespace Minimal_asset_viewer
                 rVal += $"{indent}u1 {mat.u1}\n";
                 rVal += $"{indent}u2 {mat.u2}\n";
                 rVal += $"{indent}u3 {mat.u3}\n";
-                rVal += $"{indent}u4 {mat.u4}\n";
-                rVal += $"{indent}u5 {mat.u4}\n";
+                rVal += $"{indent}u4 x: {mat.u4.x} y: {mat.u4.y} y: {mat.u4.z}\n";
+                rVal += $"{indent}u5 x: {mat.u5.x} y: {mat.u5.y} y: {mat.u5.z}\n";
 
                 rVal += $"{indent}vertexStartIndex {mat.vertexStartIndex}\n\n";
 

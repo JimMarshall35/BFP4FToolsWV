@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "6clu7PzEV/QyRCf0lt2K5j3uDSFAZDhpvz0QlHyU47PR/EfaiZ48f80xR/NtASwcLsGnnuLdnBgWP7TR/pESxw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\james.marshall\\OneDrive - Malvern Panalytical\\Documents\\bf2\\BFP4FToolsWV\\JimsTests\\JimsTests.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\james.marshall\\.nuget\\packages\\microsoft.codecoverage\\16.5.0\\microsoft.codecoverage.16.5.0.nupkg.sha512",
+    "C:\\Users\\james.marshall\\.nuget\\packages\\microsoft.net.test.sdk\\16.5.0\\microsoft.net.test.sdk.16.5.0.nupkg.sha512",
+    "C:\\Users\\james.marshall\\.nuget\\packages\\nunit\\3.12.0\\nunit.3.12.0.nupkg.sha512",
+    "C:\\Users\\james.marshall\\.nuget\\packages\\nunit3testadapter\\3.16.1\\nunit3testadapter.3.16.1.nupkg.sha512"
+  ],
+  "logs": []
+}
