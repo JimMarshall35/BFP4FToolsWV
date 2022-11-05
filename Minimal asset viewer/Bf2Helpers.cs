@@ -171,6 +171,7 @@ namespace Minimal_asset_viewer
                     var lodNode = geomNode.Nodes.Add($"Lod: {j}");
                     lodNode.Nodes.Add($"Polys: {lod.polycount}");
                     lodNode.Nodes.Add($"Nodes: {lod.nodenum}");
+                    
 
                     for(int k=0; k<lod.matnum; k++)
                     {

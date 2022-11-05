@@ -38,7 +38,10 @@ namespace Minimal_asset_viewer.new_importer
 
         public VertexUsage Usage
         {
-            get => usage < (ushort)VertexUsage.NUMVALS ? (VertexUsage)usage : VertexUsage.UNKNOWNTYPE;
+            get => Enum.GetValues(typeof(VertexUsage))
+                .Cast<VertexUsage>()
+                .Where(x => x != VertexUsage.UNKNOWNTYPE)
+                .First(x => (ushort)x == usage);
         }
 
         public VertexType VertType

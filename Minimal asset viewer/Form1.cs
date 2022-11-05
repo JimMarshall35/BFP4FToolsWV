@@ -52,11 +52,7 @@ namespace Minimal_asset_viewer
                 case ".staticmesh":
                     {
                         var newMesh = new_importer.Bf2Loader.LoadBf2File(path, error => Console.WriteLine(error));
-                        geomatIdxPicker.Maximum = newMesh.geomnum;
-                        if(geomatIdxPicker.Value > geomatIdxPicker.Maximum)
-                        {
-                            geomatIdxPicker.Value = geomatIdxPicker.Maximum;
-                        }
+                        geomatIdxPicker.Maximum = newMesh.MaxLodNum - 1;
                         _engine.objects.AddRange(newMesh.ConvertForEngine(_engine, true, (int)geomatIdxPicker.Value));
                         newMesh.SetTreeView(meshTreeView);
                         break;
@@ -64,12 +60,9 @@ namespace Minimal_asset_viewer
                     
                 case ".bundledmesh":
                     {
+
                         var newMesh = new_importer.Bf2Loader.LoadBf2File(path, error => Console.WriteLine(error));
-                        geomatIdxPicker.Maximum = newMesh.geomnum;
-                        if (geomatIdxPicker.Value > geomatIdxPicker.Maximum)
-                        {
-                            geomatIdxPicker.Value = geomatIdxPicker.Maximum;
-                        }
+                        geomatIdxPicker.Maximum = newMesh.MaxLodNum - 1;
                         _engine.objects.AddRange(newMesh.ConvertForEngine(_engine, true, (int)geomatIdxPicker.Value));
                         newMesh.SetTreeView(meshTreeView);
                         break;
@@ -78,11 +71,8 @@ namespace Minimal_asset_viewer
                 case ".skinnedmesh":
                     {
                         var newMesh = new_importer.Bf2Loader.LoadBf2File(path, error => Console.WriteLine(error));
-                        geomatIdxPicker.Maximum = newMesh.geomnum;
-                        if (geomatIdxPicker.Value > geomatIdxPicker.Maximum)
-                        {
-                            geomatIdxPicker.Value = geomatIdxPicker.Maximum;
-                        }
+                        geomatIdxPicker.Maximum = newMesh.MaxLodNum - 1;
+
                         _engine.objects.AddRange(newMesh.ConvertForEngine(_engine, true, (int)geomatIdxPicker.Value));
                         newMesh.SetTreeView(meshTreeView);
                         break;

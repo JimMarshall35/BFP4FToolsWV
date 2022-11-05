@@ -268,6 +268,23 @@ namespace Minimal_asset_viewer.new_importer
             return null;
         }
 
+        public int MaxLodNum
+        {
+            get
+            {
+                int maxNumLods = 0;
+                foreach(var g in geom)
+                {
+                    int thisNumLods = g.lodnum;
+                    if(thisNumLods > maxNumLods)
+                    {
+                        maxNumLods = thisNumLods;
+                    }
+                }
+                return maxNumLods;
+            }
+        }
+
         private void ReadLodNodeTable(Stream stream, bf2lod lod)
         {
             //bounds (24 bytes)

@@ -13,17 +13,12 @@ namespace Minimal_asset_viewer.new_importer
         BLENDINDICES,  // 2
         NORMAL,        // 3
         PSIZE,         // 4
-        TEXCOORD,      // 5
+        TEXCOORD1,      // 5
         TANGENT,       // 6
-        BINORMAL,      // 7
-        TESSFACTOR,    // 8
-        POSITIONT,     // 9
-        COLOR,         // 10
-        FOG,           // 11
-        DEPTH,         // 12
-        SAMPLE,        // 13
-
-        NUMVALS,
+        TEXCOORD2 = 261,
+        TEXCOORD3 = 517,
+        TEXCOORD4 = 773,
+        TEXCOORD5 = 1029,
         UNKNOWNTYPE
     }
 

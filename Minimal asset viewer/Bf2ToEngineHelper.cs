@@ -20,7 +20,7 @@ namespace Minimal_asset_viewer
         private static RenderObject.VertexTextured GetVertex(this bf2mesh mesh, int pos)
         {
             var posVertAttrib = mesh.FindVertAttribByUsage(VertexUsage.POSITION);
-            var uvVertAttrib = mesh.FindVertAttribByUsage(VertexUsage.TEXCOORD);
+            var uvVertAttrib = mesh.FindVertAttribByUsage(VertexUsage.TEXCOORD1);
             return new RenderObject.VertexTextured(
                 new Vector4(mesh.vert[pos + (posVertAttrib.offset / sizeof(float))], mesh.vert[pos + (posVertAttrib.offset / sizeof(float)) + 1], mesh.vert[pos + (posVertAttrib.offset / sizeof(float)) + 2], 1f),
                 Color.White,
