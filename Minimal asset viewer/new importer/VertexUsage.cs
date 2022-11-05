@@ -23,6 +23,21 @@ namespace Minimal_asset_viewer.new_importer
         DEPTH,         // 12
         SAMPLE,        // 13
 
-        NONE,
+        NUMVALS,
+        UNKNOWNTYPE
+    }
+
+    public enum VertexType
+    {
+        FLOAT1 = 0,
+        FLOAT2,
+        FLOAT3,
+        FLOAT4,
+        D3DCOLOR,
+        UBYTE4,
+        SHORT2,
+        SHORT4,
+        NUMVALS,
+        UNKNOWNTYPE
     }
 }

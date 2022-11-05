@@ -32,10 +32,10 @@ namespace Minimal_asset_viewer
             this.components = new System.ComponentModel.Container();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.rendererTimer = new System.Windows.Forms.Timer(this.components);
-            this.DescriptionLabel = new System.Windows.Forms.Label();
             this.MeshFilesCombo = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.geomatIdxPicker = new System.Windows.Forms.NumericUpDown();
+            this.meshTreeView = new System.Windows.Forms.TreeView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.geomatIdxPicker)).BeginInit();
@@ -58,18 +58,6 @@ namespace Minimal_asset_viewer
             this.rendererTimer.Interval = 50;
             this.rendererTimer.Tick += new System.EventHandler(this.rendererTimer_Tick);
             // 
-            // DescriptionLabel
-            // 
-            this.DescriptionLabel.AutoSize = true;
-            this.DescriptionLabel.BackColor = System.Drawing.Color.Transparent;
-            this.DescriptionLabel.Location = new System.Drawing.Point(3, 13);
-            this.DescriptionLabel.Name = "DescriptionLabel";
-            this.DescriptionLabel.Size = new System.Drawing.Size(35, 13);
-            this.DescriptionLabel.TabIndex = 1;
-            this.DescriptionLabel.Text = "label1";
-            this.DescriptionLabel.Click += new System.EventHandler(this.DescriptionLabel_Click);
-            this.DescriptionLabel.Paint += new System.Windows.Forms.PaintEventHandler(this.DescriptionLabel_Paint);
-            // 
             // MeshFilesCombo
             // 
             this.MeshFilesCombo.FormattingEnabled = true;
@@ -82,10 +70,10 @@ namespace Minimal_asset_viewer
             // panel1
             // 
             this.panel1.AutoScroll = true;
-            this.panel1.Controls.Add(this.DescriptionLabel);
+            this.panel1.Controls.Add(this.meshTreeView);
             this.panel1.Location = new System.Drawing.Point(12, 39);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 399);
+            this.panel1.Size = new System.Drawing.Size(328, 399);
             this.panel1.TabIndex = 3;
             // 
             // geomatIdxPicker
@@ -95,6 +83,13 @@ namespace Minimal_asset_viewer
             this.geomatIdxPicker.Size = new System.Drawing.Size(120, 20);
             this.geomatIdxPicker.TabIndex = 4;
             this.geomatIdxPicker.ValueChanged += new System.EventHandler(this.geomatIdxPicker_ValueChanged);
+            // 
+            // meshTreeView
+            // 
+            this.meshTreeView.Location = new System.Drawing.Point(3, 3);
+            this.meshTreeView.Name = "meshTreeView";
+            this.meshTreeView.Size = new System.Drawing.Size(328, 393);
+            this.meshTreeView.TabIndex = 0;
             // 
             // Form1
             // 
@@ -109,7 +104,6 @@ namespace Minimal_asset_viewer
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.geomatIdxPicker)).EndInit();
             this.ResumeLayout(false);
 
@@ -119,10 +113,10 @@ namespace Minimal_asset_viewer
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer rendererTimer;
-        private System.Windows.Forms.Label DescriptionLabel;
         private System.Windows.Forms.ComboBox MeshFilesCombo;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.NumericUpDown geomatIdxPicker;
+        private System.Windows.Forms.TreeView meshTreeView;
     }
 }
 

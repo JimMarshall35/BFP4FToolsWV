@@ -47,35 +47,44 @@ namespace Minimal_asset_viewer
             _engine.objects.Clear();
             string ending = Path.GetExtension(path).ToLower();
             var data = File.ReadAllBytes(path);
-            DescriptionLabel.Text = "";
             switch (ending)
             {
                 case ".staticmesh":
                     {
                         var newMesh = new_importer.Bf2Loader.LoadBf2File(path, error => Console.WriteLine(error));
-                        BF2StaticMesh stm = new BF2StaticMesh(data);
-                        DescriptionLabel.Text = stm.GetDescription();
-                        geomatIdxPicker.Maximum = stm.geomat.Count();
+                        geomatIdxPicker.Maximum = newMesh.geomnum;
+                        if(geomatIdxPicker.Value > geomatIdxPicker.Maximum)
+                        {
+                            geomatIdxPicker.Value = geomatIdxPicker.Maximum;
+                        }
                         _engine.objects.AddRange(newMesh.ConvertForEngine(_engine, true, (int)geomatIdxPicker.Value));
+                        newMesh.SetTreeView(meshTreeView);
                         break;
                     }
                     
                 case ".bundledmesh":
                     {
                         var newMesh = new_importer.Bf2Loader.LoadBf2File(path, error => Console.WriteLine(error));
-                        BF2BundledMesh bm = new BF2BundledMesh(data);
-                        DescriptionLabel.Text = bm.GetDescription();
-                        geomatIdxPicker.Maximum = bm.geomat.Count();
+                        geomatIdxPicker.Maximum = newMesh.geomnum;
+                        if (geomatIdxPicker.Value > geomatIdxPicker.Maximum)
+                        {
+                            geomatIdxPicker.Value = geomatIdxPicker.Maximum;
+                        }
                         _engine.objects.AddRange(newMesh.ConvertForEngine(_engine, true, (int)geomatIdxPicker.Value));
+                        newMesh.SetTreeView(meshTreeView);
                         break;
                     }
                     
                 case ".skinnedmesh":
                     {
                         var newMesh = new_importer.Bf2Loader.LoadBf2File(path, error => Console.WriteLine(error));
-                        BF2SkinnedMesh skm = new BF2SkinnedMesh(data);
-                        geomatIdxPicker.Maximum = skm.geomat.Count();
+                        geomatIdxPicker.Maximum = newMesh.geomnum;
+                        if (geomatIdxPicker.Value > geomatIdxPicker.Maximum)
+                        {
+                            geomatIdxPicker.Value = geomatIdxPicker.Maximum;
+                        }
                         _engine.objects.AddRange(newMesh.ConvertForEngine(_engine, true, (int)geomatIdxPicker.Value));
+                        newMesh.SetTreeView(meshTreeView);
                         break;
                     }
                     
@@ -140,10 +149,6 @@ namespace Minimal_asset_viewer
 
         
 
-        private void DescriptionLabel_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void MeshFilesCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -152,10 +157,6 @@ namespace Minimal_asset_viewer
             LoadMeshAtPath(FullPath);
         }
 
-        private void DescriptionLabel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void geomatIdxPicker_ValueChanged(object sender, EventArgs e)
         {

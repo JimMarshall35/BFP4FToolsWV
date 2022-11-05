@@ -8,6 +8,13 @@ using System.Threading.Tasks;
 
 namespace Minimal_asset_viewer.new_importer
 {
+    public enum Bf2AlphaMode
+    {
+        Opaque,
+        Blend,
+        AlphaTest,
+        Unknown
+    }
     /// <summary>
     /// bf2 lod material (drawcall)
     /// </summary>
@@ -142,5 +149,23 @@ namespace Minimal_asset_viewer.new_importer
         string shortname;
 
         #endregion
+
+        public Bf2AlphaMode AlphaModeDescription
+        {
+            get
+            {
+                switch (alphamode)
+                {
+                    case 0u:
+                        return Bf2AlphaMode.Opaque;
+                    case 1u:
+                        return Bf2AlphaMode.Blend;
+                    case 2u:
+                        return Bf2AlphaMode.AlphaTest;
+                    default:
+                        return Bf2AlphaMode.Unknown;
+                }
+            }
+        }
     }
 }

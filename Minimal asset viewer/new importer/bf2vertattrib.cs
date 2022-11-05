@@ -38,7 +38,12 @@ namespace Minimal_asset_viewer.new_importer
 
         public VertexUsage Usage
         {
-            get => (VertexUsage)usage;
+            get => usage < (ushort)VertexUsage.NUMVALS ? (VertexUsage)usage : VertexUsage.UNKNOWNTYPE;
+        }
+
+        public VertexType VertType
+        {
+            get => vartype < (ushort)VertexType.NUMVALS ? (VertexType)vartype : VertexType.UNKNOWNTYPE;
         }
 
         public bf2vertattrib(Stream s)

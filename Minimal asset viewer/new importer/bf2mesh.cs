@@ -361,6 +361,7 @@ namespace Minimal_asset_viewer.new_importer
             {
                 lod.mat[i] = new bf2mat();
                 ReadLodMat(stream, lod.mat[i]);
+                lod.polycount += lod.mat[i].inum / 3;
             }
         }
 

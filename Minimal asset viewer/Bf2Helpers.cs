@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using BFP4FExplorerWV;
+using Minimal_asset_viewer.new_importer;
 
 namespace Minimal_asset_viewer
 {
@@ -143,6 +145,50 @@ namespace Minimal_asset_viewer
             }
 
             return rVal;
+        }
+        internal static void SetTreeView(this bf2mesh mesh, TreeView tree)
+        {
+            tree.Nodes.Clear();
+            tree.Nodes.Add($"Version: {mesh.head.version}");
+            tree.Nodes.Add($"Vertex stride: {mesh.vertstride}");
+            tree.Nodes.Add($"Vertex number: {mesh.vertnum}");
+            var vertAttribsNode = tree.Nodes.Add($"Vertex Attributes: {mesh.vertattribnum}");
+
+            for(int i=0; i<mesh.vertattribnum; i++)
+            {
+                var attrib = mesh.vertattrib[i];
+                vertAttribsNode.Nodes.Add($"Vert type: {attrib.VertType} Vert usage: {attrib.Usage}");
+            }
+
+
+            for (int i=0; i<mesh.geomnum; i++)
+            {
+                var geom = mesh.geom[i];
+                var geomNode = tree.Nodes.Add($"Geom: {i}");
+                for(int j=0; j<geom.lodnum; j++)
+                {
+                    var lod = geom.lod[j];
+                    var lodNode = geomNode.Nodes.Add($"Lod: {j}");
+                    lodNode.Nodes.Add($"Polys: {lod.polycount}");
+                    lodNode.Nodes.Add($"Nodes: {lod.nodenum}");
+
+                    for(int k=0; k<lod.matnum; k++)
+                    {
+                        var mat = lod.mat[k];
+                        var matNode = lodNode.Nodes.Add($"mat {k}");
+                        matNode.Nodes.Add($"Alpha mode: {Enum.GetName(typeof(Bf2AlphaMode), mat.AlphaModeDescription)}");
+                        matNode.Nodes.Add($"Shader: '{mat.fxfile}'");
+                        matNode.Nodes.Add($"Technique: '{mat.technique}'");
+                        matNode.Nodes.Add($"Polygons: {mat.facenum}");
+                        var texturesNode = matNode.Nodes.Add("Textures");
+                        foreach(var t in mat.map)
+                        {
+                            texturesNode.Nodes.Add($"'{t}'");
+                        }
+
+                    }
+                }
+            }
         }
     }
 }
